@@ -1,10 +1,5 @@
 # Pattern Oriented Software Design 2021 Fall Assignment
 
-## Assignment List
-[Assignment 1:](Assignment1.md) Due 10/06
-
----
-
 ## Assignment 1
 #### Deadline: 10/06 Wed 23:59.
 
