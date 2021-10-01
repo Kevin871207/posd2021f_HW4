@@ -26,7 +26,7 @@ that is, they should implement all methods of `Shape`.
 - class `Triangle`, which is created by two non-parallel two dimensional 
 vectors.
 - class `Circle`, which is created by positive double radius.
-- the format of `info` should contain `type` and `information` of a `Shape` 
+- the format of `info` should contain **type** and **information** of a `Shape` 
 object. The example is below.
   ```
   // case `Rectangle with length 3.14, width 4`: 
@@ -40,9 +40,10 @@ object. The example is below.
   ```
 ---
 - class `TwoDimensionalVector`, which has immutable double `x`, `y`, `length` 
-and `info`, and can calculate dot product and cross product with another 
-TwoDimensionalVector. The start point of each vector is (0, 0), and the end 
-point of each vector is (`x`, `y`). The example of `info` is below.
+and `info`, and it can `subtract` and calculate `dot product` and 
+`cross product` with another TwoDimensionalVector. The start point of each 
+vector is (0, 0), and the end point of each vector is (`x`, `y`). The example of 
+`info` is below.
   ```
   // case `(3, 12.433)`:
   [3.00,12.43]
@@ -61,8 +62,8 @@ runs without any problem.
 consideration.
 - Discussion is encouraged but code must be your own.
 - If the type of returned value is `double`, you should assert the value to 
-accuracy `%3f`.
-- You should round off `double` value to `%2f` when number is showed in `info`.
+accuracy `%.3f`.
+- You should round off `double` value to `%.2f` when number is showed in `info`.
 
 #### Hints:
 - You can use `M_PI` in \<cmath> for calculation of `π`.
@@ -78,9 +79,9 @@ conditions, and make them pass.)
 ├── bin
 │   └── ut_all
 ├── src
-│   ├── shape.h
 │   ├── circle.h
 │   ├── rectangle.h
+│   ├── shape.h
 │   ├── triangle.h
 │   └── two_dimensional_vector.h
 ├── test

@@ -12,7 +12,7 @@ public:
 
     double cross(TwoDimensionalVector vec) const { }
 
-    TwoDimensionalVector substract(TwoDimensionalVector vec) const { }
+    TwoDimensionalVector subtract(TwoDimensionalVector vec) const { }
 
     std::string info() const { }
 };
