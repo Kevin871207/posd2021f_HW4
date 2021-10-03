@@ -15,7 +15,6 @@ public:
          (vec1.y() == 0 && vec2.y() == 0)) {
            throw std::invalid_argument("(vec1, vec2) should not be parallel.\n");
       }
-      std::cout << vec1.x() / vec2.x() << " @@ " <<vec2.y() / vec2.y() << std::endl;
       _vec1 = new TwoDimensionalVector(vec1.x(), vec1.y());
       _vec2 = new TwoDimensionalVector(vec2.x(), vec2.y());
     }

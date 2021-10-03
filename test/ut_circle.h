@@ -10,10 +10,14 @@ TEST(CaseCircle, Perimeter) {
   ASSERT_NEAR(62.831, c.perimeter(), 0.001);
 }
 
-TEST(CaseCircle, Info) {
+TEST(CaseCircle, Info1) {
   Circle c(10.2356);
-  std::cout << c.info() << std::endl;
   ASSERT_EQ("Circle (10.24)", c.info());
+}
+
+TEST(CaseCircle, Info2) {
+  Circle c(10.2322);
+  ASSERT_EQ("Circle (10.23)", c.info());
 }
 
 TEST(CaseCircle, RadiusIsZeroShouldThrowException) {

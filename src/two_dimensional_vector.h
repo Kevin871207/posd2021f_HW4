@@ -39,7 +39,8 @@ public:
         std::stringstream ss;
         ss.setf(std::ios::fixed);
         ss.precision(2);
-        ss << "[" << round(_x * 100.0) / 100.0 << ","
+        ss << "["
+           << round(_x * 100.0) / 100.0 << ","
            << round(_y * 100.0) / 100.0 << "]";
         return ss.str();
     }

@@ -27,7 +27,8 @@ public:
         std::stringstream ss;
         ss.setf(std::ios::fixed);
         ss.precision(2);
-        ss << "Rectangle (" << round(_length * 100.0) / 100.0 << " "
+        ss << "Rectangle ("
+           << round(_length * 100.0) / 100.0 << " "
            << round(_width * 100.0) / 100.0 << ")";
         return ss.str();
     }

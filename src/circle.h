@@ -27,7 +27,8 @@ public:
         std::stringstream ss;
         ss.setf(std::ios::fixed);
         ss.precision(2);
-        ss << "Circle (" << round(_radius * 100.0) / 100.0 << ")";
+        ss << "Circle ("
+           << round(_radius * 100.0) / 100.0 << ")";
         return ss.str();
      }
 
