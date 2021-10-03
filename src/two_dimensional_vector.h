@@ -32,7 +32,7 @@ public:
     }
 
     TwoDimensionalVector subtract(TwoDimensionalVector vec) const {
-        return TwoDimensionalVector(_x - vec.y(), _y - vec.y());
+        return TwoDimensionalVector(_x - vec.x(), _y - vec.y());
     }
 
     std::string info() const {

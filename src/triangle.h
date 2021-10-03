@@ -1,14 +1,19 @@
 #pragma once
+
 #include <sstream>
 #include <string>
+
 #include "shape.h"
 #include "two_dimensional_vector.h"
 
 class Triangle: public Shape {
 public:
     Triangle(TwoDimensionalVector vec1, TwoDimensionalVector vec2) {
-      if (vec1.x()/vec2.x() == vec1.y()/vec2.y()) {
-        throw std::invalid_argument("(vec1, vec2) should not be parallel.\n");
+      if (
+         (vec1.x() / vec2.x() == vec1.y() / vec2.y()) ||
+         (vec1.x() == 0 && vec2.x() == 0) ||
+         (vec1.y() == 0 && vec2.y() == 0)) {
+           throw std::invalid_argument("(vec1, vec2) should not be parallel.\n");
       }
       std::cout << vec1.x() / vec2.x() << " @@ " <<vec2.y() / vec2.y() << std::endl;
       _vec1 = new TwoDimensionalVector(vec1.x(), vec1.y());
