@@ -1,6 +1,3 @@
-#include <cmath>
-#include <string>
-
 #include "../src/circle.h"
 
 TEST(CaseCircle, Area) {

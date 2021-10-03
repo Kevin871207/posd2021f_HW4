@@ -1,5 +1,3 @@
-#include <string>
-
 #include "../src/rectangle.h"
 
 TEST(CaseRectangle, Area) {
