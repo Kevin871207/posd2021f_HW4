@@ -1,7 +1,9 @@
 #pragma once
+
+#include "shape.h"
+
 #include <sstream>
 #include <string>
-#include "shape.h"
 
 class Rectangle : public Shape {
 public:
@@ -25,7 +27,8 @@ public:
         std::stringstream ss;
         ss.setf(std::ios::fixed);
         ss.precision(2);
-        ss << "Rectangle (" << _length << " " << _width << ")\n";
+        ss << "Rectangle (" << round(_length * 100.0) / 100.0 << " "
+           << round(_width * 100.0) / 100.0 << ")";
         return ss.str();
     }
 

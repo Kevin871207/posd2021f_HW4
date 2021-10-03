@@ -1,4 +1,5 @@
 #pragma once
+
 // you don't have to modify this class
 class Shape {
 public:

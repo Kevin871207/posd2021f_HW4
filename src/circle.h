@@ -1,13 +1,15 @@
 #pragma once
+
 #include <cmath>
-#include <string>
 #include <sstream>
+#include <string>
+
 #include "shape.h"
 
 class Circle : public Shape {
 public:
     Circle(double radius) {
-        if (radius < 0.0) {
+        if (radius <= 0.0) {
             throw std::invalid_argument("(radius) should be positive.\n");
         }
         _radius = radius;
@@ -25,7 +27,7 @@ public:
         std::stringstream ss;
         ss.setf(std::ios::fixed);
         ss.precision(2);
-        ss << "Circle (" << _radius << ")";
+        ss << "Circle (" << round(_radius * 100.0) / 100.0 << ")";
         return ss.str();
      }
 
