@@ -15,10 +15,18 @@ TEST(CaseRectangle, Info1) {
   ASSERT_EQ("Rectangle (10.23 20.24)", r.info());
 }
 
-TEST(CaseRectangle, RadiusIsZeroShouldThrowException1) {
+TEST(CaseRectangle, LengthIsZeroShouldThrowException) {
   ASSERT_ANY_THROW(Rectangle r(0, 20.235));
 }
 
-TEST(CaseRectangle, RadiusIsZeroShouldThrowException2) {
-  ASSERT_ANY_THROW(Rectangle r(20.235, 0));
+TEST(CaseRectangle, LengthIsNegativeShouldThrowException) {
+  ASSERT_ANY_THROW(Rectangle r(-5, 5));
+}
+
+TEST(CaseRectangle, WidthIsZeroShouldThrowException) {
+  ASSERT_ANY_THROW(Rectangle r(5, 0));
+}
+
+TEST(CaseRectangle, WidthIsNegativeShouldThrowException) {
+  ASSERT_ANY_THROW(Rectangle r(5, -5));
 }

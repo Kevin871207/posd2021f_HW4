@@ -23,3 +23,7 @@ TEST(CaseCircle, Info2) {
 TEST(CaseCircle, RadiusIsZeroShouldThrowException) {
   ASSERT_ANY_THROW(Circle c(0));
 }
+
+TEST(CaseCircle, RadiusIsNegativeShouldThrowException) {
+  ASSERT_ANY_THROW(Circle c(-5));
+}
