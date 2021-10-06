@@ -1,9 +1,22 @@
 #include "../src/two_dimensional_vector.h"
 #include "../src/triangle.h"
 
-TEST(CaseTriangle, Area) {
+TEST(CaseTriangle, Creation) {
   TwoDimensionalVector vec1(1, 2);
   TwoDimensionalVector vec2(3, 4);
+  ASSERT_NO_THROW(Triangle t(vec1, vec2));
+}
+
+TEST(CaseTriangle, Area1) {
+  TwoDimensionalVector vec1(1, 2);
+  TwoDimensionalVector vec2(3, 4);
+  Triangle t(vec1, vec2);
+  ASSERT_NEAR(1, t.area(), 0.001);
+}
+
+TEST(CaseTriangle, Area2) {
+  TwoDimensionalVector vec1(-1, -2);
+  TwoDimensionalVector vec2(-3, -4);
   Triangle t(vec1, vec2);
   ASSERT_NEAR(1, t.area(), 0.001);
 }

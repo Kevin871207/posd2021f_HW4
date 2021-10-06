@@ -1,5 +1,9 @@
 #include "../src/circle.h"
 
+TEST(CaseCircle, Creation) {
+  ASSERT_NO_THROW(Circle c(10.0));
+}
+
 TEST(CaseCircle, Area) {
   Circle c(10.0);
   ASSERT_NEAR(314.159, c.area(), 0.001);

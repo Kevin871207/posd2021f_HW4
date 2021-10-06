@@ -1,5 +1,9 @@
 #include "../src/rectangle.h"
 
+TEST(CaseRectangle, Creation) {
+  ASSERT_NO_THROW(Rectangle r(10.0, 20.0));
+}
+
 TEST(CaseRectangle, Area) {
   Rectangle r(10.0, 20.0);
   ASSERT_NEAR(200, r.area(), 0.001);
