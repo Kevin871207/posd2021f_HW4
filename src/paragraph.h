@@ -23,6 +23,9 @@ class Paragraph : public Article {
         ~Paragraph() {}
 
         std::string getText() const override {
+            if (_count == 0) {
+                return _text + "\n";
+            }
             return _text;
         }
 
@@ -36,9 +39,11 @@ class Paragraph : public Article {
                       "greater then" + std::to_string(_level);
             }
             _text += "\n" + content->getText();
+            _count++;
         }
 
     private:
         int _level;
+        int _count = 0;
         std::string _text;
 };
