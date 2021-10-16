@@ -21,18 +21,21 @@ class Paragraph : public Article {
         }
 
         ~Paragraph() {}
+
         std::string getText() const override {
             return _text;
         }
+
         int getLevel() const override {
             return _level;
         }
+
         void add(Article* content) override {
             if (content->getLevel() != 0 && content->getLevel() <= _level) {
                 throw "error on add" + std::to_string(content->getLevel()) +
                       "greater then" + std::to_string(_level);
             }
-              _text += "\n" + content->getText();
+            _text += "\n" + content->getText();
         }
 
     private:

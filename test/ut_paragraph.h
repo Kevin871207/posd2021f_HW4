@@ -17,6 +17,13 @@ TEST(CaseParagraph, LevelIsNegative) {
 TEST(CaseParagraph, LevelIsLargerThenSix) {
   ASSERT_ANY_THROW(Paragraph p(7, "title"));
 }
+
+TEST(CaseParagraph, AddLowerOrEqualLevelParagraphShouldThrow) {
+  Paragraph p(3, "title");
+  Paragraph* p2 = new Paragraph(2, "title2");
+  ASSERT_ANY_THROW(p.add(p2));
+}
+
 TEST(CaseParagraph, Info1) {
   Paragraph p(1, "title");
   p.add(new ListItem("list1"));
@@ -28,4 +35,9 @@ TEST(CaseParagraph, Info1) {
   p2->add(new Text("sub text"));
   p.add(p2);
   ASSERT_EQ("# title\n- list1\n- list2\ntext\n## title2\n- list3\n- list4\nsub text", p.getText());
+}
+
+TEST(CaseParagraph, Info2) {
+  Paragraph p(1, "title");
+  ASSERT_EQ("# title\n", p.getText());
 }
