@@ -7,6 +7,12 @@
 class Paragraph : public Article {
     public:
         Paragraph(int level, std::string text) {
+            if (level <= 0) {
+                throw std::string("Level is negative or zero\n");
+            }
+            if (level > 6) {
+              throw std::string("Level is larger then six\n");
+            }
             _level = level;
             while (level--) {
                 _text += "#";
@@ -26,7 +32,7 @@ class Paragraph : public Article {
                 throw "error on add" + std::to_string(content->getLevel()) +
                       "greater then" + std::to_string(_level);
             }
-            _text += "\n" + content->getText();
+              _text += "\n" + content->getText();
         }
 
     private:

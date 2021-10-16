@@ -12,5 +12,7 @@ class Article {
         return 0;
     }
 
-    virtual void add(Article* dpFormat){};
+    virtual void add(Article* dpFormat){
+        throw std::string("Method not allowed.\n");
+    };
 };
