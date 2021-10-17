@@ -11,7 +11,7 @@ class Paragraph : public Article {
                 throw std::string("Level is negative or zero\n");
             }
             if (level > 6) {
-              throw std::string("Level is larger then six\n");
+                throw std::string("Level is larger then six\n");
             }
             _level = level;
             while (level--) {
