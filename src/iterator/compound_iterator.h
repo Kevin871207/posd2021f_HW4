@@ -1,7 +1,9 @@
 #pragma once
 
-#include "iterator.h"
+#include <string>
+
 #include "../shape.h"
+#include "iterator.h"
 
 // you should define a template class or type `ForwardIterator`
 template <class ForwardIterator>
@@ -18,10 +20,16 @@ public:
     }
 
     Shape* currentItem() const override {
+        if (isDone()) {
+          throw std::string("Current item should throw exception when is done.");
+        }
         return *_current;
     }
 
     void next() override {
+        if (isDone()) {
+          throw std::string("Next should throw exception when is done.");
+        }
         _current++;
     }
 

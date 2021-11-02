@@ -29,6 +29,29 @@ TEST(CaseCompoundShape, AreaTwoCompoundShape) {
   ASSERT_NEAR(943.477, cs2->area(), 0.001);
 }
 
+TEST(CaseCompoundShape, PerimeterOneCompoundShape) {
+  CompoundShape* cs1 = new CompoundShape();
+  cs1->addShape(new Circle(10.0));
+  cs1->addShape(new Circle(10.0));
+  ASSERT_NEAR(628.318, cs1->area(), 0.001);
+}
+
+TEST(CaseCompoundShape, PerimeterTwoCompoundShape) {
+  CompoundShape* cs1 = new CompoundShape();
+  cs1->addShape(new Circle(10.0));
+  cs1->addShape(new Circle(10.0));
+
+  CompoundShape* cs2 = new CompoundShape();
+  cs2->addShape(new Rectangle(10.0, 20.0));
+  cs2->addShape(cs1);
+
+  TwoDimensionalVector vec1(1, 2);
+  TwoDimensionalVector vec2(3, 4);
+  cs2->addShape(new Triangle(vec1, vec2));
+
+  ASSERT_NEAR(195.728, cs2->perimeter(), 0.001);
+}
+
 TEST(CaseCompoundShape, Info) {
   CompoundShape* cs1 = new CompoundShape();
   cs1->addShape(new Circle(1.1));

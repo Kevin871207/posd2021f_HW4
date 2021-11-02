@@ -10,7 +10,9 @@
 
 class CompoundShape : public Shape {
 public:
-    ~CompoundShape() { }
+    ~CompoundShape() {
+        _shapes.clear();
+     }
 
     double area() const override {
         double totalArea = 0.0;
@@ -49,12 +51,6 @@ public:
 
     void deleteShape(Shape* shape) override {
         _shapes.remove(shape);
-        // std::list<Shape*> ::const_iterator it;
-        // for (it = _shapes.begin(); it != _shapes.end(); it++) {
-        //     if ((*it)->info() == shape->info()) {
-        //         it = _shapes.erase(it);
-        //   }
-        // }
     }
 
 private:
