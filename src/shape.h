@@ -1,3 +1,9 @@
+#pragma once
+
+#include <string>
+
+#include "./iterator/iterator.h"
+
 class Shape {
 public:
     virtual ~Shape() {};
@@ -10,7 +16,11 @@ public:
 
     virtual Iterator* createIterator() = 0;
 
-    virtual void addShape(Shape* shape) { }
+    virtual void addShape(Shape* shape) {
+        throw std::string("Method not allowed");
+    }
 
-    virtual void deleteShape(Shape* shape) { }
+    virtual void deleteShape(Shape* shape) {
+        throw std::string("Method not allowed");
+     }
 };
