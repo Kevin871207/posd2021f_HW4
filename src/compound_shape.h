@@ -12,7 +12,7 @@ class CompoundShape : public Shape {
 public:
     ~CompoundShape() {
         _shapes.clear();
-     }
+    }
 
     double area() const override {
         double totalArea = 0.0;

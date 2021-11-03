@@ -4,6 +4,8 @@
 
 #include "./iterator/iterator.h"
 
+class Iterator;
+
 class Shape {
 public:
     virtual ~Shape() {};
@@ -17,10 +19,10 @@ public:
     virtual Iterator* createIterator() = 0;
 
     virtual void addShape(Shape* shape) {
-        throw std::string("Method not allowed");
+      throw std::string("Method addShape not allowed.");
     }
 
     virtual void deleteShape(Shape* shape) {
-        throw std::string("Method not allowed");
+      throw std::string("Method deleteShape not allowed.");
      }
 };

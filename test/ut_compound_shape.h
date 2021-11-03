@@ -6,6 +6,11 @@ TEST(CaseCompoundShape, Creation) {
   ASSERT_NO_THROW(new CompoundShape());
 }
 
+TEST(CaseCompoundShape, CompoundShapeShouldBeShape) {
+  Shape* cs1 = new CompoundShape();
+  ASSERT_TRUE(typeid(cs1).name() == typeid(Shape*).name());
+}
+
 TEST(CaseCompoundShape, AreaOneCompoundShape) {
   CompoundShape* cs1 = new CompoundShape();
   cs1->addShape(new Circle(10.0));
@@ -100,5 +105,4 @@ TEST(CaseCompoundShape, DeleteShapeTWoCompoundShape) {
   ASSERT_EQ(
     "CompoundShape\n{\nCircle (12.35)\nCompoundShape\n{\nCircle (1.10)\nRectangle (3.14 4.00)\n}\n}",
     cs2->info());
-  std::cout << cs2->info() << "\n";
 }

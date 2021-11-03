@@ -4,6 +4,11 @@ TEST(CaseRectangle, Creation) {
   ASSERT_NO_THROW(Rectangle r(10.0, 20.0));
 }
 
+TEST(CaseRectangle, RectangleShouldBeShape) {
+  Shape* r1 = new Rectangle(10.0, 20.0);
+  ASSERT_TRUE(typeid(r1).name() == typeid(Shape*).name());
+}
+
 TEST(CaseRectangle, Area) {
   Rectangle r(10.0, 20.0);
   ASSERT_NEAR(200, r.area(), 0.001);
@@ -33,4 +38,30 @@ TEST(CaseRectangle, WidthIsZeroShouldThrowException) {
 
 TEST(CaseRectangle, WidthIsNegativeShouldThrowException) {
   ASSERT_ANY_THROW(Rectangle r(5, -5));
+}
+
+TEST(CaseRectangle, CreateNullIterator) {
+  Rectangle r(10.0, 20.0);
+  Iterator* it = r.createIterator();
+  ASSERT_TRUE(it->isDone());
+}
+
+TEST(CaseRectangle, AddShapeShouldThrowException) {
+  Rectangle r(10.0, 20.0);
+  try {
+    r.addShape(new Rectangle(10.0, 20.0));
+    FAIL();
+  } catch (std::string ss) {
+    ASSERT_EQ(ss, "Method addShape not allowed.");
+  }
+}
+
+TEST(CaseRectangle, DeleteShapeShouldThrowException) {
+  Rectangle r(10.0, 20.0);
+  try {
+    r.deleteShape(new Rectangle(10.0, 20.0));
+    FAIL();
+  } catch (std::string ss) {
+    ASSERT_EQ(ss, "Method deleteShape not allowed.");
+  }
 }

@@ -36,3 +36,29 @@ TEST(CaseCircle, RadiusIsZeroShouldThrowException) {
 TEST(CaseCircle, RadiusIsNegativeShouldThrowException) {
   ASSERT_ANY_THROW(Circle c(-5));
 }
+
+TEST(CaseCircle, CreateNullIterator) {
+  Circle c(10.2322);
+  Iterator* it = c.createIterator();
+  ASSERT_TRUE(it->isDone());
+}
+
+TEST(CaseCircle, AddShapeShouldThrowException) {
+  Circle c(10.2322);
+  try {
+    c.addShape(new Circle(10.0));
+    FAIL();
+  } catch (std::string ss) {
+    ASSERT_EQ(ss, "Method addShape not allowed.");
+  }
+}
+
+TEST(CaseCircle, DeleteShapeShouldThrowException) {
+  Circle c(10.2322);
+  try {
+    c.deleteShape(new Circle(10.0));
+    FAIL();
+  } catch (std::string ss) {
+    ASSERT_EQ(ss, "Method deleteShape not allowed.");
+  }
+}

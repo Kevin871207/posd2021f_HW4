@@ -8,21 +8,21 @@
 class NullIterator : public Iterator {
 public:
     void first() override {
-        throw std::string("Method not allowed");
-     }
+      throw std::string("Method null iterator first not allowed");
+    }
 
     Shape* currentItem() const override {
-        if (isDone()) {
-            throw std::string("no current item");
-        }
-        return nullptr;
+      if (isDone()) {
+        throw std::string("Method null iterator no current item");
+      }
+      return nullptr;
     }
 
     void next() override {
-        throw std::string("Method not allowed");
+      throw std::string("Method null iterator next not allowed");
     }
 
     bool isDone() const override {
-        return true;
+      return true;
     }
 };

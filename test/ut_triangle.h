@@ -7,14 +7,21 @@ TEST(CaseTriangle, Creation) {
   ASSERT_NO_THROW(Triangle t(vec1, vec2));
 }
 
-TEST(CaseTriangle, Area1) {
+TEST(CaseTriangle, TriangleShouldBeShape) {
+  TwoDimensionalVector vec1(1, 2);
+  TwoDimensionalVector vec2(3, 4);
+  Shape* t1 = new Triangle(vec1, vec2);
+  ASSERT_TRUE(typeid(t1).name() == typeid(Shape*).name());
+}
+
+TEST(CaseTriangle, AreaVectorPositive) {
   TwoDimensionalVector vec1(1, 2);
   TwoDimensionalVector vec2(3, 4);
   Triangle t(vec1, vec2);
   ASSERT_NEAR(1, t.area(), 0.001);
 }
 
-TEST(CaseTriangle, Area2) {
+TEST(CaseTriangle, AreaVectorNegative) {
   TwoDimensionalVector vec1(-1, -2);
   TwoDimensionalVector vec2(-3, -4);
   Triangle t(vec1, vec2);
@@ -44,11 +51,43 @@ TEST(CaseTriangle, TwoVectorsAreParallelShouldThrowException1) {
 TEST(CaseTriangle, TwoVectorsAreParallelShouldThrowException2) {
   TwoDimensionalVector vec1(0, 2);
   TwoDimensionalVector vec2(0, 6);
-  ASSERT_ANY_THROW(Triangle t(vec1, vec2););
+  ASSERT_ANY_THROW(Triangle t(vec1, vec2));
 }
 
 TEST(CaseTriangle, TwoVectorsAreParallelShouldThrowException3) {
   TwoDimensionalVector vec1(2, 0);
   TwoDimensionalVector vec2(3, 0);
-  ASSERT_ANY_THROW(Triangle t(vec1, vec2););
+  ASSERT_ANY_THROW(Triangle t(vec1, vec2));
+}
+
+TEST(CaseTriangle, CreateNullIterator) {
+  TwoDimensionalVector vec1(1, 2);
+  TwoDimensionalVector vec2(3, 4);
+  Triangle t(vec1, vec2);
+  Iterator* it = t.createIterator();
+  ASSERT_TRUE(it->isDone());
+}
+
+TEST(CaseTriangle, AddShapeShouldThrowException) {
+  TwoDimensionalVector vec1(1, 2);
+  TwoDimensionalVector vec2(3, 4);
+  Triangle t(vec1, vec2);
+  try {
+    t.addShape(new Triangle(vec1, vec2));
+    FAIL();
+  } catch (std::string ss) {
+    ASSERT_EQ(ss, "Method addShape not allowed.");
+  }
+}
+
+TEST(CaseTriangle, DeleteShapeShouldThrowException) {
+  TwoDimensionalVector vec1(1, 2);
+  TwoDimensionalVector vec2(3, 4);
+  Triangle t(vec1, vec2);
+  try {
+    t.deleteShape(new Triangle(vec1, vec2));
+    FAIL();
+  } catch (std::string ss) {
+    ASSERT_EQ(ss, "Method deleteShape not allowed.");
+  }
 }

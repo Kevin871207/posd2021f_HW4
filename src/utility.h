@@ -15,6 +15,5 @@ Shape* selectShape(Shape* shape, ShapeConstraint constraint) {
             break;
         }
     }
-    delete it;
     return result;
 }
