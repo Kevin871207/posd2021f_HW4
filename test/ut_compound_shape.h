@@ -57,7 +57,7 @@ TEST(CaseCompoundShape, PerimeterTwoCompoundShape) {
   ASSERT_NEAR(195.728, cs2->perimeter(), 0.001);
 }
 
-TEST(CaseCompoundShape, Info) {
+TEST(CaseCompoundShape, InfoShouldBeCorrect) {
   CompoundShape* cs1 = new CompoundShape();
   cs1->addShape(new Circle(1.1));
   cs1->addShape(new Rectangle(3.14, 4));
@@ -67,6 +67,46 @@ TEST(CaseCompoundShape, Info) {
   cs2->addShape(cs1);
   ASSERT_EQ(
     "CompoundShape\n{\nCircle (12.35)\nCompoundShape\n{\nCircle (1.10)\nRectangle (3.14 4.00)\n}\n}",
+    cs2->info());
+}
+
+TEST(CaseCompoundShape, CreateIteratorShouldNoThrow) {
+  CompoundShape* cs1 = new CompoundShape();
+  ASSERT_NO_THROW(cs1->createIterator());
+}
+
+TEST(CaseCompoundShape, AddShapeOneCompoundShape) {
+  CompoundShape* cs1 = new CompoundShape();
+  Shape* c1 = new Circle(1.1);
+  Shape* c2 = new Circle(12.34567);
+  Shape* r1 = new Rectangle(3.14, 4);
+  cs1->addShape(c1);
+  cs1->addShape(c2);
+  cs1->addShape(c1);
+  cs1->addShape(c2);
+  cs1->addShape(r1);
+
+  ASSERT_EQ(
+    "CompoundShape\n{\nCircle (1.10)\nCircle (12.35)\nCircle (1.10)\nCircle (12.35)\nRectangle (3.14 4.00)\n}",
+    cs1->info());
+}
+
+TEST(CaseCompoundShape, AddShapeTWoCompoundShape) {
+  CompoundShape* cs1 = new CompoundShape();
+  Shape* c1 = new Circle(1.1);
+  Shape* c2 = new Circle(12.34567);
+  Shape* r1 = new Rectangle(3.14, 4);
+  cs1->addShape(c1);
+  cs1->addShape(r1);
+
+  CompoundShape* cs2 = new CompoundShape();
+  cs2->addShape(c1);
+  cs2->addShape(c2);
+  cs2->addShape(c1);
+  cs2->addShape(cs1);
+
+  ASSERT_EQ(
+    "CompoundShape\n{\nCircle (1.10)\nCircle (12.35)\nCircle (1.10)\nCompoundShape\n{\nCircle (1.10)\nRectangle (3.14 4.00)\n}\n}",
     cs2->info());
 }
 

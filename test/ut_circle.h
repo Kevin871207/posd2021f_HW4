@@ -1,4 +1,6 @@
 #include "../src/circle.h"
+#include "../src/shape.h"
+#include "../src/iterator/iterator.h"
 
 TEST(CaseCircle, Creation) {
   ASSERT_NO_THROW(Circle c(10.0));
@@ -41,6 +43,24 @@ TEST(CaseCircle, CreateNullIterator) {
   Circle c(10.2322);
   Iterator* it = c.createIterator();
   ASSERT_TRUE(it->isDone());
+}
+
+TEST(CaseCircle, CurrentItemOfIteratorShouldThrowException) {
+  Circle c(10.2322);
+  Iterator* it = c.createIterator();
+  ASSERT_ANY_THROW(it->currentItem());
+}
+
+TEST(CaseCircle, FirstOfIteratorShouldThrowException) {
+  Circle c(10.2322);
+  Iterator* it = c.createIterator();
+  ASSERT_ANY_THROW(it->first());
+}
+
+TEST(CaseCircle, NextOfIteratorShouldThrowException) {
+  Circle c(10.2322);
+  Iterator* it = c.createIterator();
+  ASSERT_ANY_THROW(it->next());
 }
 
 TEST(CaseCircle, AddShapeShouldThrowException) {

@@ -4,12 +4,12 @@ TEST(CaseTwoDimensionalVector, Creation) {
   ASSERT_NO_THROW(TwoDimensionalVector vec1(3.00, 12.433));
 }
 
-TEST(CaseTwoDimensionalVector, ReturnX) {
+TEST(CaseTwoDimensionalVector, XShouldBeCorrect) {
   TwoDimensionalVector vec1(3, 12.433);
   ASSERT_NEAR(3, vec1.x(), 0.001);
 }
 
-TEST(CaseTwoDimensionalVector, ReturnY) {
+TEST(CaseTwoDimensionalVector, YShouldBeCorrect) {
   TwoDimensionalVector vec1(3, 12.433);
   ASSERT_NEAR(12.433, vec1.y(), 0.001);
 }
@@ -61,7 +61,12 @@ TEST(CaseTwoDimensionalVector, Subtract) {
   ASSERT_EQ(vec3.length(), vec1.subtract(vec2).length());
 }
 
-TEST(CaseTwoDimensionalVector, Info) {
-  TwoDimensionalVector vec1(3.005, 12.433);
-  ASSERT_EQ("[3.01,12.43]", vec1.info());
+TEST(CaseTwoDimensionalVector, Info1) {
+  TwoDimensionalVector vec1(3.004, 12.433);
+  ASSERT_EQ("[3.00,12.43]", vec1.info());
+}
+
+TEST(CaseTwoDimensionalVector, Info2) {
+  TwoDimensionalVector vec1(3.005, 12.438);
+  ASSERT_EQ("[3.01,12.44]", vec1.info());
 }

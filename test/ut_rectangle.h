@@ -1,4 +1,6 @@
 #include "../src/rectangle.h"
+#include "../src/shape.h"
+#include "../src/iterator/iterator.h"
 
 TEST(CaseRectangle, Creation) {
   ASSERT_NO_THROW(Rectangle r(10.0, 20.0));
@@ -20,8 +22,13 @@ TEST(CaseRectangle, Perimeter) {
 }
 
 TEST(CaseRectangle, Info1) {
-  Rectangle r(10.234, 20.235);
-  ASSERT_EQ("Rectangle (10.23 20.24)", r.info());
+  Rectangle r(10.234, 20.234);
+  ASSERT_EQ("Rectangle (10.23 20.23)", r.info());
+}
+
+TEST(CaseRectangle, Info2) {
+  Rectangle r(10.235, 20.235);
+  ASSERT_EQ("Rectangle (10.24 20.24)", r.info());
 }
 
 TEST(CaseRectangle, LengthIsZeroShouldThrowException) {
@@ -44,6 +51,24 @@ TEST(CaseRectangle, CreateNullIterator) {
   Rectangle r(10.0, 20.0);
   Iterator* it = r.createIterator();
   ASSERT_TRUE(it->isDone());
+}
+
+TEST(CaseRectangle, CurrentItemOfIteratorShouldThrowException) {
+  Rectangle r(10.0, 20.0);
+  Iterator* it = r.createIterator();
+  ASSERT_ANY_THROW(it->currentItem());
+}
+
+TEST(CaseRectangle, FirstOfIteratorShouldThrowException) {
+  Rectangle r(10.0, 20.0);
+  Iterator* it = r.createIterator();
+  ASSERT_ANY_THROW(it->first());
+}
+
+TEST(CaseRectangle, NextOfIteratorShouldThrowException) {
+  Rectangle r(10.0, 20.0);
+  Iterator* it = r.createIterator();
+  ASSERT_ANY_THROW(it->next());
 }
 
 TEST(CaseRectangle, AddShapeShouldThrowException) {

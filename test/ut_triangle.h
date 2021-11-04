@@ -1,5 +1,6 @@
-#include "../src/two_dimensional_vector.h"
+#include "../src/iterator/iterator.h"
 #include "../src/triangle.h"
+#include "../src/two_dimensional_vector.h"
 
 TEST(CaseTriangle, Creation) {
   TwoDimensionalVector vec1(1, 2);
@@ -66,6 +67,30 @@ TEST(CaseTriangle, CreateNullIterator) {
   Triangle t(vec1, vec2);
   Iterator* it = t.createIterator();
   ASSERT_TRUE(it->isDone());
+}
+
+TEST(CaseTriangle, CurrentItemOfIteratorShouldThrowException) {
+  TwoDimensionalVector vec1(1, 2);
+  TwoDimensionalVector vec2(3, 4);
+  Triangle t(vec1, vec2);
+  Iterator* it = t.createIterator();
+  ASSERT_ANY_THROW(it->currentItem());
+}
+
+TEST(CaseTriangle, FirstOfIteratorShouldThrowException) {
+  TwoDimensionalVector vec1(1, 2);
+  TwoDimensionalVector vec2(3, 4);
+  Triangle t(vec1, vec2);
+  Iterator* it = t.createIterator();
+  ASSERT_ANY_THROW(it->first());
+}
+
+TEST(CaseTriangle, NextOfIteratorShouldThrowException) {
+  TwoDimensionalVector vec1(1, 2);
+  TwoDimensionalVector vec2(3, 4);
+  Triangle t(vec1, vec2);
+  Iterator* it = t.createIterator();
+  ASSERT_ANY_THROW(it->next());
 }
 
 TEST(CaseTriangle, AddShapeShouldThrowException) {
