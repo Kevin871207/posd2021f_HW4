@@ -109,6 +109,7 @@ TEST(CaseNullIterator, RectangleIsDoneIsTrue) {
   Iterator* it = r1->createIterator();
   ASSERT_TRUE(it->isDone());
   delete it;
+  delete r1;
 }
 
 TEST(CaseNullIterator, CircleIsDoneIsTrue) {

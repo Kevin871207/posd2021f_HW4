@@ -9,6 +9,7 @@ TEST(CaseRectangle, Creation) {
 TEST(CaseRectangle, RectangleShouldBeShape) {
   Shape* r1 = new Rectangle(10.0, 20.0);
   ASSERT_TRUE(typeid(r1).name() == typeid(Shape*).name());
+  delete r1;
 }
 
 TEST(CaseRectangle, Area) {
@@ -51,12 +52,14 @@ TEST(CaseRectangle, CreateNullIterator) {
   Rectangle r(10.0, 20.0);
   Iterator* it = r.createIterator();
   ASSERT_TRUE(it->isDone());
+  delete it;
 }
 
 TEST(CaseRectangle, CurrentItemOfIteratorShouldThrowException) {
   Rectangle r(10.0, 20.0);
   Iterator* it = r.createIterator();
   ASSERT_ANY_THROW(it->currentItem());
+  delete it;
 }
 
 TEST(CaseRectangle, FirstOfIteratorShouldThrowException) {
@@ -69,6 +72,7 @@ TEST(CaseRectangle, NextOfIteratorShouldThrowException) {
   Rectangle r(10.0, 20.0);
   Iterator* it = r.createIterator();
   ASSERT_ANY_THROW(it->next());
+  delete it;
 }
 
 TEST(CaseRectangle, AddShapeShouldThrowException) {

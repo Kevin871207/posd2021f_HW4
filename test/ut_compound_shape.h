@@ -9,6 +9,7 @@ TEST(CaseCompoundShape, Creation) {
 TEST(CaseCompoundShape, CompoundShapeShouldBeShape) {
   Shape* cs1 = new CompoundShape();
   ASSERT_TRUE(typeid(cs1).name() == typeid(Shape*).name());
+  delete cs1;
 }
 
 TEST(CaseCompoundShape, AreaOneCompoundShape) {
@@ -16,6 +17,7 @@ TEST(CaseCompoundShape, AreaOneCompoundShape) {
   cs1->addShape(new Circle(10.0));
   cs1->addShape(new Circle(10.0));
   ASSERT_NEAR(628.318, cs1->area(), 0.001);
+  delete cs1;
 }
 
 TEST(CaseCompoundShape, AreaTwoCompoundShape) {
@@ -32,6 +34,8 @@ TEST(CaseCompoundShape, AreaTwoCompoundShape) {
   cs2->addShape(new Triangle(vec1, vec2));
 
   ASSERT_NEAR(943.477, cs2->area(), 0.001);
+  delete cs1;
+  delete cs2;
 }
 
 TEST(CaseCompoundShape, PerimeterOneCompoundShape) {
@@ -39,6 +43,7 @@ TEST(CaseCompoundShape, PerimeterOneCompoundShape) {
   cs1->addShape(new Circle(10.0));
   cs1->addShape(new Circle(10.0));
   ASSERT_NEAR(628.318, cs1->area(), 0.001);
+  delete cs1;
 }
 
 TEST(CaseCompoundShape, PerimeterTwoCompoundShape) {
@@ -55,6 +60,8 @@ TEST(CaseCompoundShape, PerimeterTwoCompoundShape) {
   cs2->addShape(new Triangle(vec1, vec2));
 
   ASSERT_NEAR(195.728, cs2->perimeter(), 0.001);
+  delete cs1;
+  delete cs2;
 }
 
 TEST(CaseCompoundShape, InfoShouldBeCorrect) {
@@ -68,11 +75,14 @@ TEST(CaseCompoundShape, InfoShouldBeCorrect) {
   ASSERT_EQ(
     "CompoundShape\n{\nCircle (12.35)\nCompoundShape\n{\nCircle (1.10)\nRectangle (3.14 4.00)\n}\n}",
     cs2->info());
+  delete cs1;
+  delete cs2;
 }
 
 TEST(CaseCompoundShape, CreateIteratorShouldNoThrow) {
   CompoundShape* cs1 = new CompoundShape();
   ASSERT_NO_THROW(cs1->createIterator());
+  delete cs1;
 }
 
 TEST(CaseCompoundShape, AddShapeOneCompoundShape) {
@@ -89,6 +99,10 @@ TEST(CaseCompoundShape, AddShapeOneCompoundShape) {
   ASSERT_EQ(
     "CompoundShape\n{\nCircle (1.10)\nCircle (12.35)\nCircle (1.10)\nCircle (12.35)\nRectangle (3.14 4.00)\n}",
     cs1->info());
+  delete cs1;
+  delete c1;
+  delete c2;
+  delete r1;
 }
 
 TEST(CaseCompoundShape, AddShapeTWoCompoundShape) {
@@ -108,6 +122,11 @@ TEST(CaseCompoundShape, AddShapeTWoCompoundShape) {
   ASSERT_EQ(
     "CompoundShape\n{\nCircle (1.10)\nCircle (12.35)\nCircle (1.10)\nCompoundShape\n{\nCircle (1.10)\nRectangle (3.14 4.00)\n}\n}",
     cs2->info());
+  delete cs1;
+  delete cs2;
+  delete c1;
+  delete c2;
+  delete r1;
 }
 
 TEST(CaseCompoundShape, DeleteShapeOneCompoundShape) {
@@ -125,6 +144,10 @@ TEST(CaseCompoundShape, DeleteShapeOneCompoundShape) {
   ASSERT_EQ(
     "CompoundShape\n{\nCircle (12.35)\nCircle (12.35)\nRectangle (3.14 4.00)\n}",
     cs1->info());
+  delete cs1;
+  delete c1;
+  delete c2;
+  delete r1;
 }
 
 TEST(CaseCompoundShape, DeleteShapeTWoCompoundShape) {
@@ -145,4 +168,9 @@ TEST(CaseCompoundShape, DeleteShapeTWoCompoundShape) {
   ASSERT_EQ(
     "CompoundShape\n{\nCircle (12.35)\nCompoundShape\n{\nCircle (1.10)\nRectangle (3.14 4.00)\n}\n}",
     cs2->info());
+  delete cs1;
+  delete cs2;
+  delete c1;
+  delete c2;
+  delete r1;
 }

@@ -13,6 +13,7 @@ TEST(CaseTriangle, TriangleShouldBeShape) {
   TwoDimensionalVector vec2(3, 4);
   Shape* t1 = new Triangle(vec1, vec2);
   ASSERT_TRUE(typeid(t1).name() == typeid(Shape*).name());
+  delete t1;
 }
 
 TEST(CaseTriangle, AreaVectorPositive) {
@@ -67,6 +68,7 @@ TEST(CaseTriangle, CreateNullIterator) {
   Triangle t(vec1, vec2);
   Iterator* it = t.createIterator();
   ASSERT_TRUE(it->isDone());
+  delete it;
 }
 
 TEST(CaseTriangle, CurrentItemOfIteratorShouldThrowException) {
@@ -75,6 +77,7 @@ TEST(CaseTriangle, CurrentItemOfIteratorShouldThrowException) {
   Triangle t(vec1, vec2);
   Iterator* it = t.createIterator();
   ASSERT_ANY_THROW(it->currentItem());
+  delete it;
 }
 
 TEST(CaseTriangle, FirstOfIteratorShouldThrowException) {
@@ -83,6 +86,7 @@ TEST(CaseTriangle, FirstOfIteratorShouldThrowException) {
   Triangle t(vec1, vec2);
   Iterator* it = t.createIterator();
   ASSERT_ANY_THROW(it->first());
+  delete it;
 }
 
 TEST(CaseTriangle, NextOfIteratorShouldThrowException) {
@@ -91,6 +95,7 @@ TEST(CaseTriangle, NextOfIteratorShouldThrowException) {
   Triangle t(vec1, vec2);
   Iterator* it = t.createIterator();
   ASSERT_ANY_THROW(it->next());
+  delete it;
 }
 
 TEST(CaseTriangle, AddShapeShouldThrowException) {

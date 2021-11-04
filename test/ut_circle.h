@@ -9,6 +9,7 @@ TEST(CaseCircle, Creation) {
 TEST(CaseCircle, CircleShouldBeShape) {
   Shape* c1 = new Circle(10.0);
   ASSERT_TRUE(typeid(c1).name() == typeid(Shape*).name());
+  delete c1;
 }
 
 TEST(CaseCircle, Area) {
@@ -43,24 +44,28 @@ TEST(CaseCircle, CreateNullIterator) {
   Circle c(10.2322);
   Iterator* it = c.createIterator();
   ASSERT_TRUE(it->isDone());
+  delete it;
 }
 
 TEST(CaseCircle, CurrentItemOfIteratorShouldThrowException) {
   Circle c(10.2322);
   Iterator* it = c.createIterator();
   ASSERT_ANY_THROW(it->currentItem());
+  delete it;
 }
 
 TEST(CaseCircle, FirstOfIteratorShouldThrowException) {
   Circle c(10.2322);
   Iterator* it = c.createIterator();
   ASSERT_ANY_THROW(it->first());
+  delete it;
 }
 
 TEST(CaseCircle, NextOfIteratorShouldThrowException) {
   Circle c(10.2322);
   Iterator* it = c.createIterator();
   ASSERT_ANY_THROW(it->next());
+  delete it;
 }
 
 TEST(CaseCircle, AddShapeShouldThrowException) {

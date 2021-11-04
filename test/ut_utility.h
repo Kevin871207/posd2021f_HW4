@@ -18,6 +18,8 @@ TEST(CaseUtility, SelectShapeByArea) {
     return shape->area() > 20.0 && shape->area() <30.0;
   });
   ASSERT_EQ(r1, result);
+  delete r1;
+  delete cs;
 }
 
 TEST(CaseUtility, SelectShapeByType) {
@@ -34,4 +36,6 @@ TEST(CaseUtility, SelectShapeByType) {
     return typeid(*shape).name() == typeid(Triangle).name();
   });
   ASSERT_EQ(typeid(Triangle).name(), typeid(*result).name());
+  delete r1;
+  delete cs;
 }
