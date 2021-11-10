@@ -2,13 +2,12 @@
 
 #include <string>
 
-#include "../shape.h"
+#include "../article.h"
 #include "iterator.h"
 
-// you should define a template class or type `ForwardIterator`
 template <class ForwardIterator>
-class CompoundIterator : public Iterator{
-public:
+class CompoundIterator : public Iterator {
+   public:
     CompoundIterator(ForwardIterator begin, ForwardIterator end) {
         _begin = begin;
         _end = end;
@@ -19,7 +18,7 @@ public:
         _current = _begin;
     }
 
-    Shape* currentItem() const override {
+    Article* currentItem() const override {
         if (isDone()) {
           throw std::string("Current item should throw exception when is done.");
         }
