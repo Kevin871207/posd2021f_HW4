@@ -12,6 +12,7 @@ TEST(CaseCompoundIterator, CompoundIteratorIsAIterator) {
   Iterator* it = cs1->createIterator();
   ASSERT_TRUE(typeid(it).name() == typeid(Iterator*).name());
   delete cs1;
+  delete it;
 }
 
 TEST(CaseCompoundIterator, FirstNoException) {
@@ -19,6 +20,7 @@ TEST(CaseCompoundIterator, FirstNoException) {
   Iterator* it = cs1->createIterator();
   ASSERT_NO_THROW(it->first());
   delete cs1;
+  delete it;
 }
 
 TEST(CaseCompoundIterator, CurrentItemIsCorrect) {
@@ -28,6 +30,7 @@ TEST(CaseCompoundIterator, CurrentItemIsCorrect) {
   Iterator* it = cs1->createIterator();
   ASSERT_EQ(it->currentItem(), c1);
   delete cs1;
+  delete it;
   delete c1;
 
 }
@@ -38,6 +41,7 @@ TEST(CaseCompoundIterator, CurrentItemShouldThrowExceptionWhenIsDone1) {
   ASSERT_TRUE(it->isDone());
   ASSERT_ANY_THROW(it->currentItem());
   delete cs1;
+  delete it;
 }
 
 TEST(CaseCompoundIterator, CurrentItemShouldThrowExceptionWhenIsDone2) {
@@ -47,6 +51,7 @@ TEST(CaseCompoundIterator, CurrentItemShouldThrowExceptionWhenIsDone2) {
   it->next();
   ASSERT_ANY_THROW(it->currentItem());
   delete cs1;
+  delete it;
 }
 
 TEST(CaseCompoundIterator, NextNoException) {
@@ -55,6 +60,7 @@ TEST(CaseCompoundIterator, NextNoException) {
   Iterator* it = cs1->createIterator();
   ASSERT_NO_THROW(it->next());
   delete cs1;
+  delete it;
 }
 
 TEST(CaseCompoundIterator, NextShouldThrowExceptionWhenIsDone) {
@@ -62,6 +68,7 @@ TEST(CaseCompoundIterator, NextShouldThrowExceptionWhenIsDone) {
   Iterator* it = cs1->createIterator();
   ASSERT_ANY_THROW(it->next());
   delete cs1;
+  delete it;
 }
 
 TEST(CaseCompoundIterator, IsDoneShouldBeCorrect1) {
@@ -70,6 +77,7 @@ TEST(CaseCompoundIterator, IsDoneShouldBeCorrect1) {
   Iterator* it = cs1->createIterator();
   ASSERT_FALSE(it->isDone());
   delete cs1;
+  delete it;
 }
 
 TEST(CaseCompoundIterator, IsDoneShouldBeCorrect2) {
@@ -77,6 +85,7 @@ TEST(CaseCompoundIterator, IsDoneShouldBeCorrect2) {
   Iterator* it = cs1->createIterator();
   ASSERT_TRUE(it->isDone());
   delete cs1;
+  delete it;
 }
 
 // TEST(CaseCompoundIterator, CompoundIteratorIsDone) {
@@ -92,12 +101,14 @@ TEST(CaseCompoundIterator, IsDoneShouldBeCorrect2) {
 TEST(CaseNullIterator, NullIteratorIsAIterator) {
   Iterator* it = new NullIterator();
   ASSERT_TRUE(typeid(it).name() == typeid(Iterator*).name());
+  delete it;
 }
 
 TEST(CaseNullIterator, RectangleIsDoneIsTrue) {
   Shape* r1 = new Rectangle(3.14, 4);
   Iterator* it = r1->createIterator();
   ASSERT_TRUE(it->isDone());
+  delete it;
   delete r1;
 }
 
@@ -105,6 +116,7 @@ TEST(CaseNullIterator, CircleIsDoneIsTrue) {
   Shape* c1 = new Circle(4.0);
   Iterator* it = c1->createIterator();
   ASSERT_TRUE(it->isDone());
+  delete it;
   delete c1;
 }
 
@@ -114,6 +126,7 @@ TEST(CaseNullIterator, TriangleIsDoneIsTrue) {
   Shape* t1 = new Triangle(vec1, vec2);
   Iterator* it = t1->createIterator();
   ASSERT_TRUE(it->isDone());
+  delete it;
   delete t1;
 }
 
@@ -121,6 +134,7 @@ TEST(CaseNullIterator, FirstShouldThrowException) {
   Shape* r1 = new Rectangle(3.14, 4);
   Iterator* it = r1->createIterator();
   ASSERT_ANY_THROW(it->first());
+  delete it;
   delete r1;
 }
 
@@ -128,6 +142,7 @@ TEST(CaseNullIterator, CurrentItemtShouldThrowException) {
   Shape* r1 = new Rectangle(3.14, 4);
   Iterator* it = r1->createIterator();
   ASSERT_ANY_THROW(it->currentItem());
+  delete it;
   delete r1;
 }
 
@@ -135,5 +150,6 @@ TEST(CaseNullIterator, NextShouldThrowException) {
   Shape* r1 = new Rectangle(3.14, 4);
   Iterator* it = r1->createIterator();
   ASSERT_ANY_THROW(it->next());
+  delete it;
   delete r1;
 }
