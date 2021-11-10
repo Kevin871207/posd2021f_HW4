@@ -27,17 +27,6 @@ class Paragraph : public Article {
     ~Paragraph() {}
 
     std::string getText() const override {
-        // // if (_count == 0) {
-        // //     return _text + "\n";
-        // // }
-        // // return _text;
-        // std::stringstream ss;
-        // std::list<Shape*> ::const_iterator it;
-        // ss << "CompoundShape\n{";
-        // for (it = _shapes.begin(); it != _shapes.end(); it++) {
-        //   ss << "\n" << (*it)->info();
-        // }
-        // ss << "\n}";
         return _text;
     }
 

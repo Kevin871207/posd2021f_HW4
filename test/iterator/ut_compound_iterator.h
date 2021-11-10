@@ -79,7 +79,6 @@ TEST(CaseCompoundIterator, IsDoneShouldBeCorrect1) {
 TEST(CaseCompoundIterator, IsDoneShouldBeCorrect2) {
   Article* t = new Paragraph(1, "text");
   Iterator* it = t->createIterator();
-  it->next();
   ASSERT_TRUE(it->isDone());
   delete t;
   delete it;

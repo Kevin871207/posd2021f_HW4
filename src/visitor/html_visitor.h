@@ -11,20 +11,24 @@
 class HtmlVisitor : public ArticleVisitor {
    public:
     void visitListItem(ListItem* li) override{
-        _result += "- "+ li->getText() + "\n" ;
+        _result += "<li>" + li->getText() + "</li>";
     };
 
     void visitText(Text* t) override{
-        _result += t->getText() + "\n" ;
+        _result += "<span>" + t->getText() + "</span>";
     };
 
     void visitParagraph(Paragraph* p) override{
-        for (int i = p->getLevel(); i>0; i--) {
-            _result += "#";
-        }
-        _result += " " + _result;
+        _result += "<div><h"+ _count;
+        _result += ">"+ _result + "</";
+        _result +=  _count;
+        _result +=  ">";
         Iterator* it = p->createIterator();
-        _result ;
+        for (it->first(); !it->isDone(); it->next()) {
+            Article* a = it->currentItem();
+            a->accept(this);
+        }
+        _result += "</div>";
     };
 
     std::string getResult() const override {
@@ -33,4 +37,5 @@ class HtmlVisitor : public ArticleVisitor {
 
   private:
     std::string _result;
+    int _count = 0;
 };
