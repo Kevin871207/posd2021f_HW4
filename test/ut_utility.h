@@ -3,6 +3,7 @@
 #include "../src/rectangle.h"
 #include "../src/two_dimensional_vector.h"
 #include "../src/utility.h"
+#include "../src/compound_shape.h"
 
 TEST(CaseUtility, SelectShapeByArea) {
   TwoDimensionalVector vec1(1, 2);

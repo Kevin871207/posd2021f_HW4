@@ -5,6 +5,7 @@
 
 #include "./iterator/null_iterator.h"
 #include "shape.h"
+#include "./shape_visitor.h"
 
 class Rectangle : public Shape {
 public:
@@ -36,6 +37,9 @@ public:
 
     Iterator* createIterator() override {
         return new NullIterator();
+    }
+    void accept(ShapeVisitor* visitor) override {
+      visitor->visitRectangle(this);
     }
 
 private:

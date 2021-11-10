@@ -4,6 +4,7 @@
 #include <string>
 
 #include "./iterator/null_iterator.h"
+#include "./shape_visitor.h"
 #include "shape.h"
 #include "two_dimensional_vector.h"
 
@@ -40,6 +41,10 @@ public:
 
     Iterator* createIterator() override {
         return new NullIterator();
+    }
+
+    void accept(ShapeVisitor* sv) override {
+      sv->visitTriangle(this);
     }
 
 private:

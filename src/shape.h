@@ -5,6 +5,7 @@
 #include "./iterator/iterator.h"
 
 class Iterator;
+class ShapeVisitor;
 
 class Shape {
 public:
@@ -24,5 +25,7 @@ public:
 
     virtual void deleteShape(Shape* shape) {
       throw std::string("Method deleteShape not allowed.");
-     }
+    }
+
+    virtual void accept(ShapeVisitor* visitor) = 0;
 };

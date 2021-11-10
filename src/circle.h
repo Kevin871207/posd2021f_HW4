@@ -5,6 +5,7 @@
 #include <string>
 
 #include "./iterator/null_iterator.h"
+#include "./shape_visitor.h"
 #include "shape.h"
 
 class Circle : public Shape {
@@ -35,6 +36,10 @@ public:
 
     Iterator* createIterator() override {
         return new NullIterator();
+    }
+
+    void accept(ShapeVisitor* visitor) override {
+      visitor->visitCircle(this);
     }
 
 private:
