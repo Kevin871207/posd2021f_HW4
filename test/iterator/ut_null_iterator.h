@@ -1,51 +1,31 @@
-#include <string>
-
 #include "../../src/iterator/iterator.h"
-#include "../../src/text.h"
-#include "../../src/list_item.h"
+#include "../../src/iterator/null_iterator.h"
 
-TEST(CaseNullIterator, NullIteratorIsAIterator) {
-  Iterator* it = new NullIterator();
-  ASSERT_TRUE(typeid(it).name() == typeid(Iterator*).name());
-  delete it;
+class CaseNullIterator : public ::testing::Test {
+protected:
+    Iterator* nullIterator;
+
+    void SetUp() override {
+        nullIterator = new NullIterator();
+    }
+
+    void TearDown() override {
+        delete nullIterator;
+    }
+};
+TEST_F(CaseNullIterator, first) {
+    Iterator* nullIterator = new NullIterator();
+    ASSERT_ANY_THROW(nullIterator->first());
 }
 
-TEST(CaseNullIterator, TextIsDoneIsTrue) {
-  Article* t = new Text("text");
-  Iterator* it = t->createIterator();
-  ASSERT_TRUE(it->isDone());
-  delete it;
-  delete t;
+TEST_F(CaseNullIterator, currentItem) {
+    ASSERT_ANY_THROW(nullIterator->currentItem());
 }
 
-TEST(CaseNullIterator, ListItemIsDoneIsTrue) {
-  Article* l = new ListItem("list1");
-  Iterator* it = l->createIterator();
-  ASSERT_TRUE(it->isDone());
-  delete it;
-  delete l;
+TEST_F(CaseNullIterator, next) {
+    ASSERT_ANY_THROW(nullIterator->next());
 }
 
-TEST(CaseNullIterator, FirstShouldThrowException) {
-  Article* l = new ListItem("list1");
-  Iterator* it = l->createIterator();
-  ASSERT_ANY_THROW(it->first());
-  delete it;
-  delete l;
-}
-
-TEST(CaseNullIterator, CurrentItemtShouldThrowException) {
-  Article* l = new ListItem("list1");
-  Iterator* it = l->createIterator();
-  ASSERT_ANY_THROW(it->currentItem());
-  delete it;
-  delete l;
-}
-
-TEST(CaseNullIterator, NextShouldThrowException) {
-  Article* l = new ListItem("list1");
-  Iterator* it = l->createIterator();
-  ASSERT_ANY_THROW(it->next());
-  delete it;
-  delete l;
+TEST_F(CaseNullIterator, isDone) {
+    ASSERT_TRUE(nullIterator->isDone());
 }
