@@ -8,25 +8,27 @@
 #include "../../src/iterator/compound_iterator.h"
 #include "../../src/iterator/iterator.h"
 
-TEST(CaseShapeInfoVisitor, visitCircleShouldBeCorrect) {
+TEST(CaseShapeInfoVisitor, VisitCircle) {
     Shape* c10 = new Circle(10);
     
     ShapeInfoVisitor visitor;
     c10->accept(&visitor);
     std::string expected = "Circle (10.00)\n";  
     ASSERT_EQ(visitor.getResult(), expected);
+    delete c10;
 }
 
-TEST(CaseShapeInfoVisitor, visitRectangleShouldBeCorrect) {
+TEST(CaseShapeInfoVisitor, VisitRectangle) {
     Shape* r12 = new Rectangle(1, 2);
     
     ShapeInfoVisitor visitor;
     r12->accept(&visitor);
     std::string expected = "Rectangle (1.00 2.00)\n";  
     ASSERT_EQ(visitor.getResult(), expected);
+    delete r12;
 }
 
-TEST(CaseShapeInfoVisitor,visitTriangleleShouldBeCorrect) {
+TEST(CaseShapeInfoVisitor,VisitTrianglele) {
     TwoDimensionalVector vec1(3.002, 12.432);
     TwoDimensionalVector vec2(17.574, -4.001);
     Shape* tri = new Triangle(vec1, vec2);
@@ -35,9 +37,10 @@ TEST(CaseShapeInfoVisitor,visitTriangleleShouldBeCorrect) {
     tri->accept(&visitor);
     std::string expected = "Triangle ([3.00,12.43] [17.57,-4.00])\n";  
     ASSERT_EQ(visitor.getResult(), expected);
+    delete tri;
 }
 
-TEST(CaseShapeInfoVisitor, visitCompoundShapeShouldBeCorrect) {
+TEST(CaseShapeInfoVisitor, VisitCompoundShape) {
     CompoundShape* cs1 = new CompoundShape();
     cs1->addShape(new Circle(1.1));
     cs1->addShape(new Rectangle(3.14 ,4));
@@ -57,6 +60,8 @@ TEST(CaseShapeInfoVisitor, visitCompoundShapeShouldBeCorrect) {
                            "}\n";
 
     ASSERT_EQ(visitor.getResult(), expected);
+    delete cs1;
+    delete cs2;
 }
 
 TEST(CaseShapeInfoVisitor, getResult) {

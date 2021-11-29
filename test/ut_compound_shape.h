@@ -88,7 +88,7 @@ TEST_F(CaseCompoundShape, DeleteShapeShouldNotThrow) {
     Shape* cs = new CompoundShape();
     cs->addShape(c1);
     cs->addShape(c2);
-    ASSERT_NO_THROW(cs->deleteShape(c2););
+    ASSERT_NO_THROW(cs->deleteShape(c2));
     ASSERT_NEAR(3.141, cs->area(), 0.001);
     delete c1;
 }
