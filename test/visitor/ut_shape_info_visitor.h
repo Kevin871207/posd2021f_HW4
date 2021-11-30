@@ -60,6 +60,7 @@ TEST(CaseShapeInfoVisitor, VisitCompoundShape) {
                            "}\n";
 
     ASSERT_EQ(visitor.getResult(), expected);
+    delete cs2;
 }
 
 TEST(CaseShapeInfoVisitor, getResult) {

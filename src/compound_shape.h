@@ -17,11 +17,6 @@ class CompoundShape : public Shape {
         for(Shape* s : _shapes) {
             delete s;
         }
-        //////
-        // std::list<Shape*> ::const_iterator it;
-        // for (it = _shapes.begin(); it != _shapes.end(); it++) {
-        //     delete *it;
-        // }
     }
 
     double area() const override {
