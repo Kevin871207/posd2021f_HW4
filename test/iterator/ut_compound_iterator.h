@@ -5,7 +5,6 @@
 class CaseCompoundIterator : public ::testing::Test {
 protected:
     Iterator* compoundIterator1;
-    Iterator* compoundIterator2;
 
     std::list<Shape*> _shapes;
     Shape* c10;
@@ -31,6 +30,11 @@ TEST_F(CaseCompoundIterator, CompoundIteratorIsAIterator) {
 
 TEST_F(CaseCompoundIterator, FirstNoException) {
     ASSERT_NO_THROW(compoundIterator1->first());
+}
+
+TEST_F(CaseCompoundIterator, FirstIsCorrect) {
+    compoundIterator1->first();
+    ASSERT_EQ(c10, compoundIterator1->currentItem());
 }
 
 TEST_F(CaseCompoundIterator, CurrentItemIsCorrect) {

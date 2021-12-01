@@ -28,7 +28,7 @@ TEST(CaseShapeInfoVisitor, VisitRectangle) {
     delete r12;
 }
 
-TEST(CaseShapeInfoVisitor,VisitTrianglele) {
+TEST(CaseShapeInfoVisitor,VisitTriangle) {
     TwoDimensionalVector vec1(3.002, 12.432);
     TwoDimensionalVector vec2(17.574, -4.001);
     Shape* tri = new Triangle(vec1, vec2);
@@ -44,19 +44,37 @@ TEST(CaseShapeInfoVisitor, VisitCompoundShape) {
     CompoundShape* cs1 = new CompoundShape();
     cs1->addShape(new Circle(1.1));
     cs1->addShape(new Rectangle(3.14 ,4));
+   
+    ShapeInfoVisitor visitor;
+    cs1->accept(&visitor);
+    std::string expected = "CompoundShape{\n"
+                           "  Circle (1.10)\n" 
+                           "  Rectangle (3.14 4.00)\n"
+                           "}\n";
+
+    ASSERT_EQ(visitor.getResult(), expected);
+    delete cs1;
+}
+
+TEST(CaseShapeInfoVisitor, VisitComplexCompoundShape) {
+    CompoundShape* cs1 = new CompoundShape();
+    cs1->addShape(new Circle(1.1));
+    cs1->addShape(new Rectangle(3.14 ,4));
     CompoundShape* cs2 = new CompoundShape();
     cs2->addShape(new Circle(12.34567));
     cs2->addShape(cs1);
+    cs2->addShape(new Rectangle(3.14 ,4.20));
+
 
     ShapeInfoVisitor visitor;
     cs2->accept(&visitor);
-    std::cout << visitor.getResult();
     std::string expected = "CompoundShape{\n"
                            "  Circle (12.35)\n"  
                            "  CompoundShape{\n"   
                            "    Circle (1.10)\n"     
                            "    Rectangle (3.14 4.00)\n"
                            "  }\n"
+                           "  Rectangle (3.14 4.20)\n"
                            "}\n";
 
     ASSERT_EQ(visitor.getResult(), expected);
